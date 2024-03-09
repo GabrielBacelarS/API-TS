@@ -1,9 +1,11 @@
-export function authMiddleware(req, reply){
-    const apiEmail = req.headers['email']
+import { FastifyReply, FastifyRequest } from "fastify"
 
-    if (!apiEmail){
-        return reply.status(401).send({
-            message: 'Email is required'
-        })
-    }
+export async function authMiddleware(req: FastifyRequest, reply:FastifyReply) {
+  const apiEmail = req.headers['email']
+
+  if (!apiEmail) {
+    return reply.status(401).send({
+      message: 'Email is required',
+    })
+  }
 }

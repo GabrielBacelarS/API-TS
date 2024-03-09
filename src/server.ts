@@ -1,5 +1,5 @@
 import fastify, { FastifyInstance } from 'fastify'
-import { userRoutes } from './routes/user.route' 
+import { userRoutes } from './routes/user.route'
 import { contactsRoutes } from './routes/contact.router'
 const app: FastifyInstance = fastify({ logger: true })
 

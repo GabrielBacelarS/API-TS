@@ -3,17 +3,26 @@ export interface Contact {
   name: string
   email: string
   phone: string
-  userId: string
+  userId?: string
 }
 
 export interface ContactCreate {
   name: string
   email: string
   phone: string
-  userEmail: string
+  userEmail: string | undefined | string[]
+}
+export interface ContactCreateDate {
+  name: string
+  email: string
+  phone: string
+  userId: string
 }
 
 export interface ContactRepository {
-  create(data: ContactCreate): Promise<Contact>
-  findByEmailOrNull(email:string, phone:string): Promise<Contact || null>
+  create(data: ContactCreateDate): Promise<Contact>
+  findByEmailOrPhone(email: string, phone: string): Promise<Contact | null>
+  findAllContacts(userId: string): Promise<Contact[]>
+  updateContact({id,name,email,phone}:Contact):Promise<Contact>
+  delete(id:string): Promise<boolean>
 }
